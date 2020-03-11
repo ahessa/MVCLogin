@@ -1,0 +1,91 @@
+﻿@model MVCLogin.ViewModels.UserViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <style>
+        #login-div{
+            position:absolute;
+            left: 40%;
+            top:40%;
+            border: 5px solid #000000;
+            padding: 10px 10px;
+        }
+        .field-validation-error{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div"> 
+        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+        {
+        <table>
+            <tr>
+                <td></td>
+                <td style="text-decoration:underline">Just App</td>
+            </tr>
+
+            <tr>
+                <td>
+                    @*shows a label for username*@
+                    @Html.LabelFor(model => model.UserName)
+                </td>
+                <td>
+                    @*//EditorFor is a helper class shows that creates a text box if the property has a data type of string, if the
+                property is a boolean value, it will create A checkbox.
+                //this helper class will help us create HTML elements based on data types.*@
+
+                    @Html.EditorFor(model => model.UserName)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Password)
+                </td>
+
+                <td>
+                    @Html.EditorFor(model => model.Password)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(model => model.Password)</td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    @*<label class="field-validation-error">@Html.DisplayFor(model  => model.LoginErrorMessage)</label>*@
+                    @ViewBag.LoginErrorMessage
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" name="name" value="Login" />
+                    <input type="submit" name="name" value="Clear" />
+                </td>
+            </tr>
+
+        </table>
+        }
+
+
+    </div>
+</body>
+</html>

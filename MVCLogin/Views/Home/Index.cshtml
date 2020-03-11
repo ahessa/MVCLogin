@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+
+    //this prevents the user from going to the home page without logging in
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+</head>
+<body>
+    <div>
+        <h1>Dashboard</h1>
+        <h2>Welcome @Session["userName"].ToString() !</h2>
+        @*anchor link to redirect the user to logout action in the login controller*@
+        <a href="@Url.Action("LogOut", "Login")">Logout</a>
+        <br />
+        <a href="@Url.Action("Index", "Users")">User List</a>
+    </div>
+</body>
+</html>
