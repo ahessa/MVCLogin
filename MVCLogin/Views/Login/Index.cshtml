@@ -1,91 +1,114 @@
 ﻿@model MVCLogin.ViewModels.UserViewModel
-@{
-    Layout = null;
-}
 
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-
     <style>
-        #login-div{
-            position:absolute;
-            left: 40%;
-            top:40%;
-            border: 5px solid #000000;
-            padding: 10px 10px;
+
+        .jumbotron{
+            margin-top: 200px;
+            margin-left: 300px;
+            width: 400px;
+            height: 300px;
+            background: none;
         }
-        .field-validation-error{
-            color:red;
+
+        .btn{
+            margin-left: 85px;
+            
         }
+
+        .display-5{
+            margin-left: 80px;
+            margin-bottom: 15px;
+        }
+
+
+        body{
+            background-image: url('/Images/pexels-photo-14675.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+
     </style>
+
 </head>
 <body>
-    <div id="login-div"> 
-        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
-        {
-        <table>
-            <tr>
-                <td></td>
-                <td style="text-decoration:underline">Just App</td>
-            </tr>
+    <div class="container">
+        <div class="jumbotron" style="">
+            @using (Html.BeginForm("Authorize", "Login", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
 
-            <tr>
-                <td>
-                    @*shows a label for username*@
-                    @Html.LabelFor(model => model.UserName)
-                </td>
-                <td>
-                    @*//EditorFor is a helper class shows that creates a text box if the property has a data type of string, if the
-                property is a boolean value, it will create A checkbox.
-                //this helper class will help us create HTML elements based on data types.*@
+                <table>
+                    <tr>
+                        <td></td>
+                        <td> <h2 class="display-5">Logz</h2></td>
+                    </tr>
+                    <td></td>
+                    <tr>
+                        <td>
+                            @* shows a label for username*@
+                            @Html.LabelFor(model => model.UserName, new { htmlAttributes = new { @class = "mr-sm-2" } })
+                        </td>
+                        <td>
+                            @*//EditorFor is a helper class shows that creates a text box if the property has a data type of string, if the
+                                    property is a boolean value, it will create A checkbox.
+                                //this helper class will help us create HTML elements based on data types.*@
 
-                    @Html.EditorFor(model => model.UserName)
-                </td>
-            </tr>
+                            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control mb-2 mr-sm-2" } })
+                        </td>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td>@Html.ValidationMessageFor(model => model.UserName)</td>
-            </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                    </tr>
 
-            <tr>
-                <td>
-                    @Html.LabelFor(model => model.Password)
-                </td>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.Password, new { htmlAttributes = new { @class = "mr-sm-2" } })
+                        </td>
 
-                <td>
-                    @Html.EditorFor(model => model.Password)
-                </td>
-            </tr>
+                        <td>
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control mb-2 mr-sm-2" } })
+                        </td>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td>@Html.ValidationMessageFor(model => model.Password)</td>
-            </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                    </tr>
 
-            <tr>
-                <td colspan="2">
-                    @*<label class="field-validation-error">@Html.DisplayFor(model  => model.LoginErrorMessage)</label>*@
-                    @ViewBag.LoginErrorMessage
-                </td>
-            </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                            @* @ViewBag.LoginErrorMessage*@
+                        </td>
+                    </tr>
 
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" name="name" value="Login" />
-                    <input type="submit" name="name" value="Clear" />
-                </td>
-            </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn btn-primary mb-2">Login</button>
+                            @*<input type="submit" name="name" value="Clear" />*@
+                        </td>
+                    </tr>
 
-        </table>
-        }
+                </table>
 
 
-    </div>
+            }
 </body>
-</html>
+    </html>
+
+
+

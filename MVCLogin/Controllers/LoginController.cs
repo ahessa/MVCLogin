@@ -32,7 +32,7 @@ namespace MVCLogin.Controllers
                 //inside this if statement we handeled the situation when there is wrong username or password
                 if (userDetails == null)
                 {
-                    ViewBag.LoginErrorMessage = "Wrong Username or Password";
+                    userModel.LoginErrorMessage = "Wrong Username or Password";
                     return View("Index", userModel);
                 }
                 else
@@ -48,7 +48,7 @@ namespace MVCLogin.Controllers
 
         public ActionResult LogOut()
         {
-            int userId = (int)Session["userID"];
+            Guid userId = (Guid)Session["userID"];
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }
