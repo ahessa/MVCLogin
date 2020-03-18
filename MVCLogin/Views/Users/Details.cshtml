@@ -6,61 +6,83 @@
 
 <!DOCTYPE html>
 
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<style>
+
+   body{
+            background-image: url('/Images/pexels-photo-14675.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+   .card{
+       /*background:none;*/
+   }
+
+</style>
+
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Details</title>
 </head>
 <body>
-    <div>
-        <h4>User</h4>
-        <hr />
-        <dl class="dl-vertical">
-            <dt>
-                @Html.DisplayNameFor(model => model.UserName)
-            </dt>
+    
+    <div class="container">
+        <div class="container">
 
-            <dd>
-                @Html.DisplayFor(model => model.UserName)
-            </dd>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="/Images/IMG_5079.jpg" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h3 class="card-title">@Html.DisplayFor(model => model.UserName)</h3>
+                    <p class="card-text">
+                        <dl class="dl-vertical">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Age)
+                            </dt>
 
-            @*<dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Age)
+                            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>*@
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Hobby)
+                            </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Age)
-            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Hobby)
+                            </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Age)
-            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Country)
+                            </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Hobby)
-            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Country)
+                            </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Hobby)
-            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Date)
+                            </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Country)
-            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Date)
+                            </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Country)
-            </dd>
+                        </dl>
 
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+                    </p>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = Model.UserID }, null, new { @class = "btn btn-success" }) |*@
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+                </div>
+            </div>
+        </div>
+
 </body>
 </html>

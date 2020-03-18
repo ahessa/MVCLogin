@@ -4,6 +4,27 @@
     Layout = null;
 }
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<style>
+
+    
+    p{
+        margin-left: 250px;
+    }
+
+    body{
+            background-image: url('/Images/pexels-photo-14675.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+</style>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -12,36 +33,49 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Password)
+    <div class="container">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.UserName)*@
+                    Users
+                </th>
+
+                @*<th>
+            @Html.DisplayNameFor(model => model.Password)
             </th>*@
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            @*<td>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+
+                    @*<td>
                 @Html.DisplayFor(modelItem => item.Password)
-            </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
-            </td>
-        </tr>
-    }
-    
-    </table>
+                </td>*@
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+    </div>
+
+    <p>
+        @Html.ActionLink("Create a New User", "Create", null, new { @class = "btn btn-success" })
+    </p>
+
+
+
 </body>
 </html>

@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVCLogin.Models;
+using System.Data.Entity.Validation;
+using MVCLogin.ViewModels;
 
 namespace MVCLogin.Controllers
 {
@@ -47,7 +49,7 @@ namespace MVCLogin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserID,UserName,Password")] User user)
+        public async Task<ActionResult> Create([Bind(Include = "UserID,UserName,Password,Age,Hobby,Country,Date")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +75,18 @@ namespace MVCLogin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            var EdituserViewModel = new EditUserViewModel
+            {
+                Age = user.Age,
+                Date = user.Date,
+                Country = user.Country,
+                Hobby = user.Hobby,
+                UserID = user.UserID,
+                UserName = user.UserName,
+                Password = PasswordEncryption.TextToEncrypt(user.Password)
+            };
+            
+            return View(EdituserViewModel);
         }
 
         // POST: Users/Edit/5
@@ -81,16 +94,48 @@ namespace MVCLogin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserID,UserName,Password,Age,Country,Hobby")] User user)
+        public async Task<ActionResult> Edit(EditUserViewModel UserViewModel)
         {
+                var user = new User
+                {
+                    Age = UserViewModel.Age,
+                    Date = UserViewModel.Date,
+                    Country = UserViewModel.Country,
+                    Hobby = UserViewModel.Hobby,
+                    UserID = UserViewModel.UserID,
+                    UserName = UserViewModel.UserName,
+                    Password = PasswordEncryption.TextToEncrypt(UserViewModel.Password)
+                };
             if (ModelState.IsValid)
             {
-                user.Password = PasswordEncryption.TextToEncrypt(user.Password);
+            
+
                 db.Entry(user).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                try
+                {
+
+                    await db.SaveChangesAsync();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+
+                }
                 return RedirectToAction("Index");
+           
             }
-            return View(user);
+            return View(UserViewModel);
+
+
         }
 
         // GET: Users/Delete/5

@@ -11,16 +11,23 @@ namespace MVCLogin.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         public System.Guid UserID { get; set; }
+
+        [Required]
+        [DisplayName("User Name")]
         public string UserName { get; set; }
         public string Password { get; set; }
         public Nullable<int> Age { get; set; }
         public string Country { get; set; }
         public string Hobby { get; set; }
 
-
+        [DataType(DataType.Date)]
+        [DisplayName("Date of Birth")]
+        public Nullable<System.DateTime> Date { get; set; }
     }
 }

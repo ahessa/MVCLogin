@@ -32,7 +32,7 @@ namespace MVCLogin.Controllers
                 //inside this if statement we handeled the situation when there is wrong username or password
                 if (userDetails == null)
                 {
-                    userModel.LoginErrorMessage = "Wrong Username or Password";
+                    //userModel.LoginErrorMessage = "Wrong Username or Password";
                     return View("Index", userModel);
                 }
                 else
@@ -52,5 +52,12 @@ namespace MVCLogin.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }
+
+        public ActionResult SendEmail()
+        {
+            return View();
+        }
+
+
     }
 }

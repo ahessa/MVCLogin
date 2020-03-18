@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MVCLogin.ViewModels
 {
-    public class UserViewModel : User
+    public class UserViewModel 
     {
         public string LoginErrorMessage { get; set; }
 

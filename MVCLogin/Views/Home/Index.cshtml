@@ -25,7 +25,11 @@
     <style>
 
         .display-1{
-            position:center;
+            text-align:center;
+        }
+
+        .display-4{
+            text-align:center;
         }
 
         body{
@@ -33,6 +37,18 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
+        }
+
+        .btn-secondary{
+            text-align:center;
+        }
+
+        .btn-danger{
+            text-align:center;
+        }
+
+        .jumbotron{
+            
         }
 
 
@@ -45,14 +61,34 @@
 
     <div>
 
+
+
         <h1 class="display-1">Welcome @Session["userName"].ToString()!</h1>
+        <br />
+        <h1 class="display-4">Thank You for Logging In.</h1>
 
 
 
         @*anchor link to redirect the user to logout action in the login controller*@
-        <a href="@Url.Action("LogOut", "Login")">Logout</a>
-        <br />
-        <a href="@Url.Action("Index", "Users")">User List</a>
+        @*<a href="@Url.Action("LogOut", "Login")">Logout</a>*@
+        @*<a href="@Url.Action("Index", "Users")">User List</a>*@
+
+
+
+        <br /><br />
+
+
+
+        <table style="margin: 0 auto;">
+            <td></td>
+            <td>
+                <a href="@Url.Action("LogOut", "Login")" class="btn btn-danger" role="button">Logout</a>
+
+
+                <a style="margin-left: 15px;" href="@Url.Action("Index", "Users")" class="btn btn-secondary" role="button">Users List</a>
+            </td>
+        </table>
+
     </div>
 
 

@@ -106,10 +106,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\IMG_5079.jpg" />
     <Content Include="Images\pexels-photo-14675.jpeg" />
-    <Content Include="Images\pexels-photo-277593.jpeg" />
-    <Content Include="Images\pexels-photo-396143.jpeg" />
-    <Content Include="Images\pexels-photo-837500.jpeg" />
+    <Content Include="Images\pexels-photo-277017.png" />
     <Content Include="Models\LoginDataBase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LoginDataBase.edmx</DependentUpon>
@@ -1822,18 +1821,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginDataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginDataBase1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginDataBase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\PasswordEncryption.cs" />
     <Compile Include="Models\User.cs">
       <DependentUpon>LoginDataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CreateUserViewModel.cs" />
+    <Compile Include="ViewModels\EditUserViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <EntityDeploy Include="Models\LoginDataBase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LoginDataBase.Designer.cs</LastGenOutput>
+      <LastGenOutput>LoginDataBase1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\LoginDataBase.edmx.diagram">
       <DependentUpon>LoginDataBase.edmx</DependentUpon>
